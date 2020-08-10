@@ -1,0 +1,34 @@
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    justify-content: space-between;
+}
+input{
+    width: 250px;
+    height: 20px;
+}
+button{
+    height: 26px;
+}
+.logo{
+    font-size: 25px;
+}
+
+.dropdown-menu{ 
+    display: none;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+}
+.navbar-item{
+    margin: 6px;
+}
