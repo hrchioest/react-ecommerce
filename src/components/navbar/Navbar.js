@@ -24,7 +24,7 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             LOGO
           </Typography> 
-          <Typography>
+          <Typography style={{"marginRight":"10px"}}>
           Productos
           </Typography>
           <CartIcon />

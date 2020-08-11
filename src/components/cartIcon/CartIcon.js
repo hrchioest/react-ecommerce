@@ -1,5 +1,5 @@
 import React from 'react';
-import './cartIcon.scss'
+
 
 
 const CartIcon = () =>{
