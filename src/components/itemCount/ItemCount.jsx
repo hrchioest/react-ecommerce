@@ -31,10 +31,11 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
                 <span>{count}</span>
                 <RemoveCircleIcon onClick={subtract}></RemoveCircleIcon>
             </div>
-            <button
+            <button style={{fontSize:18}}
             disabled = {count <min} 
             onClick={handleClick}>Agregar al carrito
             </button>
+            <span style={{fontSize:14, color:"red"}}>**La compra mínina es de 2 und</span>
         </div>
         
     );
