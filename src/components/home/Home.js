@@ -1,8 +1,15 @@
 import React from 'react';
+import ItemCount from '../itemCount/ItemCount';
 
-const Home = ({greeting}) => {
+const Home = ({handleAdd}) => {
     return(
-        <h1 style={{"textAlign":"center"}}>{greeting}</h1>
-    );
+        <>
+            <ItemCount 
+            onAdd ={handleAdd}
+            initial ={0}
+            min={2}
+            max={30}/>
+        </>
+    );  
 }
 export default Home;
