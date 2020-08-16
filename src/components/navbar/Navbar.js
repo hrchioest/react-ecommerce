@@ -1,20 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CartIcon from "../cartIcon/CartIcon";
+import CartIconCount from "../carIconCount/CartIconCount";
+import useStyles from "../../styleComponets/StyleComponents";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
-
-const Navbar = () => {
+const Navbar = ({counter}) => {
   const classes = useStyles();
 
   return (
@@ -24,10 +15,7 @@ const Navbar = () => {
           <Typography variant="h6" className={classes.title}>
             LOGO
           </Typography> 
-          <Typography style={{"marginRight":"10px"}}>
-          Productos
-          </Typography>
-          <CartIcon />
+          <CartIconCount cartCount={counter}/>
         </Toolbar>
       </AppBar>
     </div>
