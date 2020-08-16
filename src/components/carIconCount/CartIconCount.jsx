@@ -5,7 +5,6 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 
 const CartIconCount = ({cartCount}) =>{
-    console.log(cartCount)
 
     return(
         <>
