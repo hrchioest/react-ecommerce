@@ -35,7 +35,7 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
             disabled = {count <min} 
             onClick={handleClick}>Agregar al carrito
             </button>
-            <span style={{fontSize:14, color:"red"}}>**La compra mínina es de 2 und</span>
+            <span style={{fontSize:14, color:"red"}}>Nota:La compra mínina es de {min} und</span>
         </div>
         
     );
