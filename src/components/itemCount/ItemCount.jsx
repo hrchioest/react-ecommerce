@@ -7,21 +7,18 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
     const [count, setCount] = useState(initial);
     
 
-    const add = (e) =>{
-        if(count < max){
+    const add = () =>{
+        if(count < max)
             setCount(count +1)
-        } 
     };
 
-    const subtract = (e) =>{
-        if(count > min){
+    const subtract = () =>{
+        if(count > min)
             setCount(count -1)
-        }
     };
     
-    const handleClick =() =>{
-        onAdd(count);
-    }
+    const handleClick =() =>onAdd(count);
+    
     
 
     return(
