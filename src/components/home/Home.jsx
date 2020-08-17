@@ -7,7 +7,7 @@ const Home = ({handleAdd}) => {
             <ItemCount 
             onAdd ={handleAdd}
             initial ={0}
-            min={2}
+            min={1}
             max={30}/>
         </>
     );  
