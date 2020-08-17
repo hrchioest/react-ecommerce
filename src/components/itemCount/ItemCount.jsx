@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Icon from '@material-ui/core/Icon';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+
 
 const ItemCount = ({initial, min, max, onAdd}) =>{
     
@@ -22,18 +25,17 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
     
 
     return(
-        <div style={{background:"pink", width:300, display:"flex", flexDirection:"column", textAlign:"center"}}>  
-            <div>
-                <Icon disabled = {count ===max} onClick={add}>add_circle</Icon> 
+        <Box flexDirection="colum"  width="185px" height="100px">   
+            <Box display="flex" justifyContent="space-between" border="solid 1px black" borderRadius="8px">
+                <RemoveCircleIcon style={{ fontSize: 30 }} onClick={subtract}></RemoveCircleIcon>
                 <span>{count}</span>
-                <RemoveCircleIcon onClick={subtract}></RemoveCircleIcon>
-            </div>
-            <button style={{fontSize:18}}
+                <Icon style={{ fontSize: 30 }} disabled = {count ===max} onClick={add}>add_circle</Icon> 
+            </Box>
+            <Button variant="contained" color="secondary" 
             disabled = {count <min} 
             onClick={handleClick}>Agregar al carrito
-            </button>
-            <span style={{fontSize:14, color:"red"}}>Nota:La compra mínina es de {min} und</span>
-        </div>
+            </Button>
+        </Box> 
         
     );
 }
