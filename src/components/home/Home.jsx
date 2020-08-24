@@ -1,15 +1,12 @@
 import React from 'react';
 import ItemListContainer from '../itemListContainer/ItemListContainer';
-import ItemDetailContainer from '../itemDetailContainer/ItemDetailContainer';
 
 
-const Home = ({handleAdd}) => {
+const Home = () => {
 
     return(
     <>
         <ItemListContainer />
-        
-        <ItemDetailContainer handleAdd={handleAdd} />
     </>
     )
    
