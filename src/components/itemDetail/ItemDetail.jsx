@@ -4,8 +4,17 @@ import Item from '../item/Item';
 import { Button } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
+import CartContext from '../../CartContext';
 
-const ItemDetail = ({item, handleAdd}) => {
+const ItemDetail = ({item}) => {
+    const [count, setCount] = React.useState(1);
+    const { productsAdd } = React.useContext(CartContext);
+
+    const handleClickComprar = () => {
+        if(count > 0){
+            productsAdd({name: item.name, count })
+        }
+    }
 
     return(
     
@@ -13,11 +22,11 @@ const ItemDetail = ({item, handleAdd}) => {
             <Item item={item} />
             <Box margin={10}>
                     <ItemCount 
-                    onAdd ={handleAdd}
-                    initial ={1}   
+                    setCount ={setCount}
+                    count={count}
                     min={1}
                     max={30}/>
-                    <Button variant="contained" color="primary" fullWidth >Comprar</Button>
+                    <Button variant="contained" color="primary" fullWidth onClick={handleClickComprar} >Comprar</Button>
             </Box>
         </Box>
 

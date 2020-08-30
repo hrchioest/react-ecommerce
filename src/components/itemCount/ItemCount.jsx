@@ -5,10 +5,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 
-const ItemCount = ({initial, min, max, onAdd}) =>{
-    
-    const [count, setCount] = useState(initial);
-    
+const ItemCount = ({ min, max, count, setCount}) =>{    
 
     const add = () =>{
         if(count < max)
@@ -20,7 +17,7 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
             setCount(count -1)
     };
     
-    const handleClick =() =>onAdd(count);
+    const handleClick = () => setCount(count);
     
     
 
