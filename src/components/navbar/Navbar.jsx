@@ -4,8 +4,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import CartIconCount from "../carIconCount/CartIconCount";
 import useStyles from "./Style";
+import CartContext from '../../CartContext';
 
-const Navbar = ({counter}) => {
+const Navbar = () => {
+  const { cartCount } = React.useContext(CartContext);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -14,7 +17,7 @@ const Navbar = ({counter}) => {
           <Typography variant="h6" className={classes.title}>
             LOGO
           </Typography> 
-          <CartIconCount cartCount={counter}/>
+          <CartIconCount count={cartCount} />
         </Toolbar>
       </AppBar>
     </div>
