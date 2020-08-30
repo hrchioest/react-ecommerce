@@ -20,7 +20,6 @@ const ItemDetailContainer = ({handleAdd}) =>{
     
     useEffect(() =>{
         setLoading(true);
-        console.log('loading')
         itemDetails(productId).then((product) => {
             setItem(product);
             setLoading(false)    
