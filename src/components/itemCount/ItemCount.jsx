@@ -5,9 +5,9 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 
-const ItemCount = ({initial, min, max, onAdd}) =>{
+const ItemCount = ({min, max, count, setCount}) =>{
     
-    const [count, setCount] = useState(initial);
+   
     
 
     const add = () =>{
@@ -20,7 +20,7 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
             setCount(count -1)
     };
     
-    const handleClick =() =>onAdd(count);
+   
     
     
 
@@ -31,10 +31,7 @@ const ItemCount = ({initial, min, max, onAdd}) =>{
                 <span>{count}</span>
                 <Icon style={{ fontSize: 30 }} disabled = {count ===max} onClick={add}>add_circle</Icon> 
             </Box>
-            <Button variant="contained" color="secondary" 
-            disabled = {count <min} 
-            onClick={handleClick}>Agregar al carrito
-            </Button>
+            
         </Box> 
         
     );
