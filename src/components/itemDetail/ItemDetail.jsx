@@ -16,6 +16,7 @@ const ItemDetail = ({item}) => {
         }
     }
 
+
     return(
     
         <Box display="flex" justifyContent="center" margin="auto" flexWrap="wrap" bgcolor="grey.300" m={2}>
@@ -26,7 +27,7 @@ const ItemDetail = ({item}) => {
                     count={count}
                     min={1}
                     max={30}/>
-                    <Button variant="contained" color="primary" fullWidth onClick={handleClickComprar} >Comprar</Button>
+                    <Button variant="contained" color="secondary" fullWidth onClick={handleClickComprar} >Comprar</Button>
             </Box>
         </Box>
 
