@@ -7,25 +7,19 @@ import ContextCart from './CartContext';
 
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
+  
   const [cartItem, setCartItem] = useState([]);
-  const handleAdd = (count) =>{
-    console.log('123');
-    setCartCount(count)
-  }
+ 
   const productsAdd = (itemCount) =>{
-
     setCartItem(state => {
       return [...state, itemCount]
     })
-    
   }
 
-  console.log('state cartime: ',cartItem);
 
 
   return (
-    <ContextCart.Provider value={{cartCount, handleAdd, productsAdd}}>
+    <ContextCart.Provider value={{cartItem, productsAdd}}>
       <BrowserRouter>
           <Navbar />
         <Switch>  
