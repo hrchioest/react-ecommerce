@@ -2,9 +2,11 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CartIconCount from "../carIconCount/CartIconCount";
+import CartIcon from "../cart/CartIcon";
 import useStyles from "./Style";
 import CartContext from '../../CartContext';
+import {Link} from "react-router-dom";
+
 
 const Navbar = () => {
   const { cartCount } = React.useContext(CartContext);
@@ -15,9 +17,9 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            LOGO
-          </Typography> 
-          <CartIconCount count={cartCount} />
+             <Link to="/">LOGO</Link>
+          </Typography>
+          <CartIcon count={cartCount} />
         </Toolbar>
       </AppBar>
     </div>
