@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Icon from '@material-ui/core/Icon';
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 import Box from '@material-ui/core/Box';
