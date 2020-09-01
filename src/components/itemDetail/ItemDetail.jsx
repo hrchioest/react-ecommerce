@@ -11,8 +11,9 @@ const ItemDetail = ({item}) => {
     const { productsAdd } = React.useContext(CartContext);
 
     const handleClickComprar = () => {
-        if(count > 0){
-            productsAdd({name: item.name, count })
+        if(count > 0  ){
+            productsAdd(
+                {id: item.id, name: item.name, count })
         }
     }
 
@@ -27,7 +28,7 @@ const ItemDetail = ({item}) => {
                     count={count}
                     min={1}
                     max={30}/>
-                    <Button variant="contained" color="secondary" fullWidth onClick={handleClickComprar} >Comprar</Button>
+                    <Button variant="contained" color="secondary" fullWidth onClick={handleClickComprar}>Comprar</Button>
             </Box>
         </Box>
 
