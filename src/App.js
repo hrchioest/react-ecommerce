@@ -11,9 +11,27 @@ function App() {
   const [cartItem, setCartItem] = useState([]);
  
   const productsAdd = (itemCount) =>{
-    setCartItem(state => {
-      return [...state, itemCount]
-    })
+    if(cartItem.find(item=>item.id ===itemCount.id)) {
+      const newCartItem = cartItem.map(item=>{
+        if(item.id ===itemCount.id){
+          return {...item, count:itemCount.count + item.count}
+        }
+        return item;
+      });
+      setCartItem(newCartItem)
+    }else{
+      setCartItem(state => {
+        return [...state, itemCount]
+      })
+    }
+      
+    
+
+    
+    
+    
+    
+   
   }
 
 
