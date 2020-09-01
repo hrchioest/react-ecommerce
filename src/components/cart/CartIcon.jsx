@@ -8,22 +8,30 @@ import CartContext from '../../CartContext';
 
 const CartIcon = () =>{
 
-    const [show, setShow] = useState(false);
-
+    const [anchorEl, setAnchorEl] = useState(false);
     const { cartItem } = React.useContext(CartContext);
     
-    const handleIco = () =>{
-        setShow(true) 
+    const handleClick = (event) =>{
+        setAnchorEl(event.currentTarget) 
     }
+
+    const cantTotal = () =>{
+        return cartItem.reduce((acumulador, item) => acumulador + item.count, 0);        
+    }
+   
     return(
-        <div onClick={handleIco} position="relative">
-            <IconButton >
-                <Badge badgeContent={cartItem.length}  color="secondary" showZero>
-                    <ShoppingCartIcon />
-                </Badge>
-            </IconButton>
-            {show && <Cart />}
-        </div>
+        <>
+            <div aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                <IconButton >
+                    <Badge badgeContent={cantTotal()}  color="secondary" showZero>
+                        <ShoppingCartIcon />
+                    </Badge>
+                </IconButton>
+            </div>
+            <Cart anchorEl={anchorEl} setAnchorEl={setAnchorEl}/>
+        </>
+
+        
     );  
 }
 
