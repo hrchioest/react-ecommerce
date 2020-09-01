@@ -21,7 +21,6 @@ const ItemDetailContainer = () =>{
     
     useEffect(() =>{
         setLoading(true);
-        console.log('loading')
         itemDetails(productId).then((product) => {
             setItem(product);
             setLoading(false)    
@@ -29,7 +28,7 @@ const ItemDetailContainer = () =>{
        
     }, [itemDetails])
 
-    console.log('loading',loading)
+  
 
     return(
         <>
