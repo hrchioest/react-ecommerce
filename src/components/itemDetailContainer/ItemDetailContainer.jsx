@@ -12,7 +12,8 @@ const itemDetails = (productId) => {
         },3000)) 
 } 
 
-const ItemDetailContainer = ({handleAdd}) =>{
+const ItemDetailContainer = () =>{
+
     const [loading, setLoading] = useState(false);
    
     const [item, setItem] = useState([]);
@@ -20,7 +21,6 @@ const ItemDetailContainer = ({handleAdd}) =>{
     
     useEffect(() =>{
         setLoading(true);
-        console.log('loading')
         itemDetails(productId).then((product) => {
             setItem(product);
             setLoading(false)    
@@ -28,12 +28,12 @@ const ItemDetailContainer = ({handleAdd}) =>{
        
     }, [itemDetails])
 
-    console.log('loading',loading)
+  
 
     return(
         <>
             {loading ? <CircularProgress color="secondary" />
-            : <ItemDetail item={item} handleAdd={handleAdd} />
+            : <ItemDetail item={item} />
 
             }
         </>
