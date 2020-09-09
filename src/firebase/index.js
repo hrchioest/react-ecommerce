@@ -14,4 +14,9 @@ const app = firebase.initializeApp({
 });
 
 
-export default app;
+export function getFirebase(){
+    return app;
+}
+export function getFirestore(){
+    return firebase.firestore(app);
+} 
