@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Home from './components/home/Home';
+import Cart from './components/cart/Cart';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
-import ContextCart from './CartContext';
+import CartContext from './CartContext';
 
 
 function App() {
@@ -24,32 +25,24 @@ function App() {
         return [...state, itemCount]
       })
     }
-      
-    
-
-    
-    
-    
-    
-   
   }
-
-
-
   return (
-    <ContextCart.Provider value={{cartItem, productsAdd}}>
+    <CartContext.Provider value={{cartItem, productsAdd}}>
       <BrowserRouter>
           <Navbar />
-        <Switch>  
+        <Switch> 
           <Route exact path = "/">
             <Home />
+          </Route>
+          <Route exact path = "/cart"> 
+            <Cart />
           </Route>
           <Route exact path = "/item/:productId">
           <ItemDetailContainer />
           </Route>
         </Switch>
       </BrowserRouter>
-    </ContextCart.Provider>
+    </CartContext.Provider>
   );
 }
 

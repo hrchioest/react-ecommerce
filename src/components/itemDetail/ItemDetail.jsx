@@ -13,7 +13,7 @@ const ItemDetail = ({item}) => {
     const handleClickComprar = () => {
         if(count > 0  ){
             productsAdd(
-                {id: item.id, name: item.name, count })
+                {id: item.id, name: item.name, img:item.img, count, price:item.price })
         }
     }
 

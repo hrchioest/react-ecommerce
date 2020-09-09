@@ -26,7 +26,7 @@ const ItemDetailContainer = () =>{
             setLoading(false)    
         });
        
-    }, [itemDetails])
+    }, [productId])
 
   
 
