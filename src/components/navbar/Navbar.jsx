@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import CartIcon from "../cart/CartIcon";
 import useStyles from "./Style";
 import {NavLink} from "react-router-dom";
-import { useState } from "react";
 
 const categories = [{ name:'Notebooks', id:'notebooks'}, {name: 'Audio', id:'audio'}, {name:'Smartwatches', id:'smartwatches'}]
 
