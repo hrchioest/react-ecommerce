@@ -6,7 +6,6 @@ import Cart from './components/cart/Cart';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import CartContext from './CartContext';
 
-
 function App() {
   
   const [cartItem, setCartItem] = useState([]);
@@ -32,6 +31,9 @@ function App() {
           <Navbar />
         <Switch> 
           <Route exact path = "/">
+            <Home />
+          </Route>
+          <Route path = "/categories/:categoryId">
             <Home />
           </Route>
           <Route exact path = "/cart"> 
