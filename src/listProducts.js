@@ -26,7 +26,7 @@ const products = [
         img:"https://d26lpennugtm8s.cloudfront.net/stores/001/063/033/products/prod-91-99d1fa9eb7125e47b915718462204871-480-0.jpg",
         price:"$24.900,00",
         stock:100
-    }
+    },
     {
         id:4,
         categoryId:"audio",
@@ -35,7 +35,7 @@ const products = [
         img:"https://d26lpennugtm8s.cloudfront.net/stores/001/063/033/products/prod-211-92f8ed128ca3c0e90d15706313429025-480-0.jpg",
         price:"$24.900,00",
         stock:100
-    }
+    },
     {
         id:5,
         categoryId:"notebooks",
