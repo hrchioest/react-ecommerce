@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from "react-router-dom";
-import listProducts from '../../listProducts';
+import { useParams } from "react-router-dom";
+// import listProducts from '../../listProducts';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ItemDetail from '../itemDetail/ItemDetail' ;
+import { getFirestore } from "../../firebase";
 
 
-const itemDetails = (productId) => {
-    return new Promise(result =>  setTimeout(() => 
-        { result(listProducts.find(product =>
-            product.id===parseInt(productId)))  
-        },3000)) 
-} 
+// const itemDetails = (productId) => {
+//     return new Promise(result =>  setTimeout(() => 
+//         { result(listProducts.find(product =>
+//             product.id===parseInt(productId)))  
+//         },3000)) 
+// } 
 
 const ItemDetailContainer = () =>{
 
@@ -20,12 +21,15 @@ const ItemDetailContainer = () =>{
     const {productId} = useParams();
     
     useEffect(() =>{
-        setLoading(true);
-        itemDetails(productId).then((product) => {
-            setItem(product);
-            setLoading(false)    
+        const db = getFirestore();
+        const docRef = db.collection('items').doc(productId);
+
+        docRef.get().then((querySnapshot) => { 
+
+            setLoading(false);
+            setItem(querySnapshot.data());  
         });
-       
+
     }, [productId])
 
   
