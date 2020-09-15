@@ -8,12 +8,8 @@ import CartContext from '../../CartContext';
 const CartIcon = () =>{
 
     
-    const { cartItem } = React.useContext(CartContext);
+    const { cantTotal } = React.useContext(CartContext);
     
-   
-    const cantTotal = () =>{
-        return cartItem.reduce((acumulador, item) => acumulador + item.count, 0);        
-    }
    
     return(
         <>
