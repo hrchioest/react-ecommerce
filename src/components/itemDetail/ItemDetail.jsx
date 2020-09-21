@@ -29,6 +29,8 @@ const ItemDetail = ({item}) => {
                     min={1}
                     max={30}/>
                     <Button variant="contained" color="secondary" fullWidth onClick={handleClickComprar}>Comprar</Button>
+                    <p>Precio: $ {item.price}</p>
+                    <p>Stock disponible: {item.stock}</p>
             </Box>
         </Box>
 

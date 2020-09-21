@@ -11,6 +11,7 @@ function App() {
   const [cartItem, setCartItem] = useState([]);
  
   const productsAdd = (itemCount) =>{
+
     if(cartItem.find(item=>item.id ===itemCount.id)) {
       const newCartItem = cartItem.map(item=>{
         if(item.id ===itemCount.id){
@@ -25,8 +26,16 @@ function App() {
       })
     }
   }
+  
+  const costoTotal = () => {
+    return cartItem.reduce((acumulador, item) => acumulador + item.price*item.count, 0);
+  }
+  const cantTotal = () =>{
+    return cartItem.reduce((acumulador, item) => acumulador + item.count, 0);        
+}
+
   return (
-    <CartContext.Provider value={{cartItem, productsAdd}}>
+    <CartContext.Provider value={{cartItem, productsAdd, costoTotal, cantTotal}}>
       <BrowserRouter>
           <Navbar />
         <Switch> 

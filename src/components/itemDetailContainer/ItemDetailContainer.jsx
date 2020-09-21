@@ -5,6 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ItemDetail from '../itemDetail/ItemDetail' ;
 import { getFirestore } from "../../firebase";
 
+//listado de productos cuando que se trae desde una promesa:
 
 // const itemDetails = (productId) => {
 //     return new Promise(result =>  setTimeout(() => 
@@ -13,6 +14,7 @@ import { getFirestore } from "../../firebase";
 //         },3000)) 
 // } 
 
+//listado de los productos traidos de firebase:     
 const ItemDetailContainer = () =>{
 
     const [loading, setLoading] = useState(false);
@@ -27,13 +29,11 @@ const ItemDetailContainer = () =>{
         docRef.get().then((querySnapshot) => { 
 
             setLoading(false);
-            setItem(querySnapshot.data());  
+            setItem({ id:querySnapshot.id, ...querySnapshot.data() });  
         });
 
     }, [productId])
-
-  
-
+    
     return(
         <>
             {loading ? <CircularProgress color="secondary" />
