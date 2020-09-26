@@ -36,10 +36,19 @@ function App() {
     const cantTotal = () => {
         return cartItem.reduce((acumulador, item) => acumulador + item.count, 0)
     }
+    const resetCantCart = () => {
+        setCartItem([])
+    }
 
     return (
         <CartContext.Provider
-            value={{ cartItem, productsAdd, costoTotal, cantTotal }}
+            value={{
+                cartItem,
+                productsAdd,
+                costoTotal,
+                cantTotal,
+                resetCantCart,
+            }}
         >
             <BrowserRouter>
                 <Navbar />
