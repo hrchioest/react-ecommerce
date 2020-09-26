@@ -3,7 +3,7 @@
 # Project Ecommerce
 
 
-## Este proyecto de ecommerce es elaborado en React Js conectado a Firebase / Firestore y tiene las siguientes funcionalidades:
+## Este proyecto de ecommerce es elaborado en React Js. conectado a Firebase / Firestore y tiene las siguientes funcionalidades:
 
 1. Es navegable en home y muestra todos los productos disponibles con imagen y nombre.
 2. También se puede navegar por cada categorias : audios, smartphones, laptops y smartwatches.
