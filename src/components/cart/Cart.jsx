@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
-import DeleteIcon from '@material-ui/icons/Delete'
+
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Button,
+    Box,
+} from '@material-ui/core'
+
 import Formulario from '../formulario/Formulario'
 import CartContext from '../../CartContext'
-import Typography from '@material-ui/core/Typography'
-import { Box } from '@material-ui/core'
-
+import Alert from '@material-ui/lab/Alert'
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import { getFirestore } from '../../firebase'
+import { convertToMoney } from '../../utils'
 
 const Cart = () => {
     const { cartItem, costoTotal, cantTotal } = React.useContext(CartContext)
@@ -24,7 +27,11 @@ const Cart = () => {
     const [orderId, setOrderId] = useState(null)
 
     if (cartItem.length === 0) {
-        return <div>¡No se tiene productos seleccionados!</div>
+        return (
+            <Alert severity="warning">
+                ¡No se tiene productos seleccionados!
+            </Alert>
+        )
     }
 
     const handleCheckout = () => {
@@ -73,11 +80,7 @@ const Cart = () => {
 
     if (orderId) {
         return (
-            <Box>
-                <Typography variant="p">
-                    Tu orden de compra es: {orderId}
-                </Typography>
-            </Box>
+            <Alert severity="success">Tu orden de compra es: {orderId}</Alert>
         )
     }
 
@@ -91,7 +94,6 @@ const Cart = () => {
                             <TableCell>Nombre</TableCell>
                             <TableCell align="right">Cantidad</TableCell>
                             <TableCell align="right">precio</TableCell>
-                            <TableCell align="right">Opción</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -101,7 +103,7 @@ const Cart = () => {
                                     <img
                                         src={item.img}
                                         alt="img"
-                                        style={{ width: '120px' }}
+                                        style={{ width: '82px' }}
                                     />
                                 </TableCell>
                                 <TableCell>{item.name}</TableCell>
@@ -109,24 +111,14 @@ const Cart = () => {
                                     {item.count}
                                 </TableCell>
                                 <TableCell align="right">
-                                    $ {item.price}
-                                </TableCell>
-                                <TableCell align="right">
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        startIcon={<DeleteIcon />}
-                                    >
-                                        {' '}
-                                        Eliminar
-                                    </Button>
+                                    {convertToMoney(item.price)}
                                 </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
                 <Box display="flex" justifyContent="flex-end" p={1}>
-                    Costo total: $ {costoTotal()}
+                    Costo total: {costoTotal()}
                 </Box>
             </TableContainer>
 
