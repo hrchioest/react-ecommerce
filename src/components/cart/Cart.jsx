@@ -21,12 +21,14 @@ import { getFirestore } from '../../firebase'
 import { convertToMoney } from '../../utils'
 
 const Cart = () => {
-    const { cartItem, costoTotal, cantTotal } = React.useContext(CartContext)
+    const { cartItem, costoTotal, resetCantCart } = React.useContext(
+        CartContext
+    )
 
     const [showForm, setShowForm] = useState(false)
     const [orderId, setOrderId] = useState(null)
 
-    if (cartItem.length === 0) {
+    if (cartItem.length === 0 && orderId === null) {
         return (
             <Alert severity="warning">
                 ¡No se tiene productos seleccionados!
@@ -76,6 +78,7 @@ const Cart = () => {
         if (outOfStock.length === 0) {
             await batch.commit()
         }
+        resetCantCart()
     }
 
     if (orderId) {
