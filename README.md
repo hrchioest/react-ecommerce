@@ -13,7 +13,7 @@
 6. Al clickear checkout nos pedirá completar datos : Nombre y Apellido, Email, confirmacion de Email y Número de contacto; y si los datos son correctos según la validación, se activará el botón "finalizar compra".
 7. Al clickear botón "finalizar compra" nos dará un mensaje con el cógido de orden de compra.
 8. El stock es manejado por firestore y se actualiza por cada orden de compra realizado.
-9. Las colecciones creadas en firestores son de items, categories y Ordenes.
+9. Las colecciones creadas en firestores son de items, categories y órdenes.
 
 
 ## La librería extra que usé es Material UI : https://material-ui.com/
