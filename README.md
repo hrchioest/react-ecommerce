@@ -1,9 +1,9 @@
 
 
-# Project Ecommerce
+## Project Ecommerce
 
 
-## Este proyecto de ecommerce es elaborado en React Js. conectado a Firebase / Firestore y tiene las siguientes funcionalidades:
+### Este proyecto de ecommerce es elaborado en React Js. conectado a Firebase / Firestore y tiene las siguientes funcionalidades:
 
 1. Es navegable en home y muestra todos los productos disponibles con imagen y nombre.
 2. También se puede navegar por cada categorias : audios, smartphones, laptops y smartwatches.
@@ -13,10 +13,10 @@
 6. Al clickear checkout nos pedirá completar datos : Nombre y Apellido, Email, confirmacion de Email y Número de contacto; y si los datos son correctos según la validación, se activará el botón "finalizar compra".
 7. Al clickear botón "finalizar compra" nos dará un mensaje con el cógido de orden de compra.
 8. El stock es manejado por firestore y se actualiza por cada orden de compra realizado.
-9. Las colecciones creadas en firestores son de items, categories y órdenes.
 
+### Las colecciones creadas en firestore son de items, categories y órdenes.
 
-## La librería extra que usé es Material UI : https://material-ui.com/
+### La librería extra que usé es Material UI : https://material-ui.com/
 
 Para darle estilos con los componentes que tiene la librería como Botones, Inputs, Select, Box, etc. que en mi caso use estilos muy básicos que fueron muy intuitivos al momento aplicarlos. Fue una experiencia muy agradable que poco a poco iré profundizando más en su gran utilidad.
 
