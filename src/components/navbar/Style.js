@@ -3,6 +3,11 @@ import { makeStyles } from '@material-ui/core/styles'
 const style = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        position: 'fixed',
+        width: '100%',
+    },
+    appBar: {
+        backgroundColor: 'black',
     },
     title: {
         flexGrow: 1,
@@ -13,9 +18,32 @@ const style = makeStyles((theme) => ({
         margin: theme.spacing(1),
         minWidth: 180,
     },
-    cat: {
+
+    categoria: {
+        color: 'white',
+        textDecoration: 'none',
+    },
+    categoriaMobile: {
         color: 'black',
         textDecoration: 'none',
+    },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
 }))
 

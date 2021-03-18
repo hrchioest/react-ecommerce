@@ -1,17 +1,20 @@
-import React from "react";
-import Box from '@material-ui/core/Box';
-import Item from "../item/Item";
+import React from 'react'
+import Box from '@material-ui/core/Box'
+import Item from '../item/Item'
 
-const ItemList =({list}) => {
-    return(
-        <Box display="flex" justifyContent="space-around" flexWrap="wrap">
-            {list.map(product => 
-                <Item key={product.id} item={product} 
-                />
-                
-            )}
+const ItemList = ({ list }) => {
+    return (
+        <Box
+            display="flex"
+            justifyContent="space-around"
+            flexWrap="wrap"
+            marginBottom="100px"
+        >
+            {list.map((product) => (
+                <Item key={product.id} item={product} />
+            ))}
         </Box>
     )
 }
 
-export default ItemList;
+export default ItemList

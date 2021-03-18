@@ -1,9 +1,10 @@
 import React from 'react'
-import ItemListContainer from '../itemListContainer/ItemListContainer'
-
+import ItemListContainer from '../../containers/itemListContainer/ItemListContainer'
+import ImgMain from '../main/ImgMain'
 const Home = () => {
     return (
         <>
+            <ImgMain />
             <ItemListContainer />
         </>
     )

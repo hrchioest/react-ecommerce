@@ -2,8 +2,8 @@ import React, { useState, useMemo } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { Box } from '@material-ui/core'
-
 import { makeStyles } from '@material-ui/core/styles'
+import AlertFailForm from './AlertFailForm'
 
 const Formulario = ({ createOrder }) => {
     const useStyles = makeStyles((theme) => ({
@@ -14,12 +14,14 @@ const Formulario = ({ createOrder }) => {
             },
         },
     }))
+
     const [form, setForm] = useState({
         name: '',
         email: '',
         emailConfirmation: '',
         phone: '',
     })
+    const [open, setOpen] = React.useState(false)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -100,14 +102,17 @@ const Formulario = ({ createOrder }) => {
             </Box>
 
             <Box display="flex" justifyContent=" flex-end" p={1}>
-                <Button
-                    disabled={disabled}
-                    variant="contained"
-                    color="secondary"
-                    onClick={handleOnclick}
-                >
-                    Finalizar compra
-                </Button>
+                {disabled ? (
+                    <AlertFailForm open={open} setOpen={setOpen} />
+                ) : (
+                    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={handleOnclick}
+                    >
+                        Finalizar compra
+                    </Button>
+                )}
             </Box>
         </>
     )

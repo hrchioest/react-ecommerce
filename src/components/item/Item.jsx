@@ -1,14 +1,23 @@
 import React from 'react'
-import Box from '@material-ui/core/Box'
+import { Box, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const Item = ({ item: { id, name, description, img } }) => (
-    <Box flexDirection="colum">
+    <Box flexDirection="colum" marginTop="60px">
         <h2>{name}</h2>
         <Link to={`/item/${id}`}>
             <img src={img} alt="img" width="350" />
         </Link>
-        <p>{description}</p>
+        <Box>
+            <Link to={`/item/${id}`}>
+                <Button
+                    variant="contained"
+                    style={{ backgroundColor: '#f7d04b' }}
+                >
+                    Details
+                </Button>
+            </Link>
+        </Box>
     </Box>
 )
 

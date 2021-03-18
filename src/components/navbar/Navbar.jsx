@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import {
+    Menu,
+    IconButton,
+    MenuItem,
+    Typography,
+    AppBar,
+    Toolbar,
+} from '@material-ui/core/'
+import MoreIcon from '@material-ui/icons/MoreVert'
 import CartIcon from '../cart/CartIcon'
 import useStyles from './Style'
-import { useLocation, NavLink, useHistory } from 'react-router-dom'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import Select from '@material-ui/core/Select'
+import { NavLink, Link } from 'react-router-dom'
 import { getFirestore } from '../../firebase'
 
 // const categories = [
@@ -17,12 +19,7 @@ import { getFirestore } from '../../firebase'
 //     { name: 'Smartwatches', id: 'smartwatches' },
 // ]
 
-const detectCurrentCategory = (pathname) => {
-    return pathname.split('/').slice(-1).pop()
-}
-
 const Navbar = () => {
-    const { push } = useHistory()
     const classes = useStyles()
 
     // conectando categories con firebase:
@@ -49,29 +46,63 @@ const Navbar = () => {
             })
     }, [])
 
-    console.log(categories)
-    const { pathname } = useLocation()
+    const [anchorEl, setAnchorEl] = React.useState(null)
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
-    const [currentCategory, setCurrentCategory] = React.useState(
-        pathname === '/' || pathname === '/cart'
-            ? 'none'
-            : detectCurrentCategory(pathname)
-    )
+    const isMenuOpen = Boolean(anchorEl)
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-    useEffect(() => {
-        if (pathname === '/') {
-            setCurrentCategory('none')
-        }
-    }, [pathname])
-
-    const handleChange = ({ target: { value } }) => {
-        setCurrentCategory(value)
-        push(value === 'none' ? '/' : `/categories/${value}`)
+    const handleProfileMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget)
     }
+
+    const handleMobileMenuClose = () => {
+        setMobileMoreAnchorEl(null)
+    }
+
+    const handleMenuClose = () => {
+        setAnchorEl(null)
+        handleMobileMenuClose()
+    }
+
+    const handleMobileMenuOpen = (event) => {
+        setMobileMoreAnchorEl(event.currentTarget)
+    }
+
+    const menuId = 'primary-search-account-menu'
+
+    const mobileMenuId = 'primary-search-account-menu-mobile'
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <Link
+                className={classes.categoriaMobile}
+                to="/categories/notebooks"
+            >
+                <MenuItem>Notebooks</MenuItem>
+            </Link>
+            <Link className={classes.categoriaMobile} to="/categories/audio">
+                <MenuItem>Audio</MenuItem>
+            </Link>
+            <Link
+                className={classes.categoriaMobile}
+                to="/categories/smartwatches"
+            >
+                <MenuItem>Smartwatches</MenuItem>
+            </Link>
+        </Menu>
+    )
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.appBar}>
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         <NavLink to="/">
@@ -81,34 +112,47 @@ const Navbar = () => {
                             />
                         </NavLink>
                     </Typography>
-
-                    <FormControl className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">
-                            Categories
-                        </InputLabel>
-                        <Select
-                            labelId="demo-controlled-open-select-outlined"
-                            id="demo-controlled-open-outlined"
-                            value={currentCategory}
-                            onChange={handleChange}
+                    <div className={classes.grow} />
+                    <div className={classes.sectionDesktop}>
+                        <Link className={classes.categoria} to="/">
+                            <MenuItem>Home</MenuItem>
+                        </Link>
+                        <Link
+                            className={classes.categoria}
+                            to="/categories/notebooks"
                         >
-                            <MenuItem value="none">None</MenuItem>
-                            {categories.map((category) => (
-                                <MenuItem
-                                    key={category.id}
-                                    value={category.key}
-                                >
-                                    {category.name}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
-
+                            <MenuItem>Notebooks</MenuItem>
+                        </Link>
+                        <Link
+                            className={classes.categoria}
+                            to="/categories/audio"
+                        >
+                            <MenuItem>Audio</MenuItem>
+                        </Link>
+                        <Link
+                            className={classes.categoria}
+                            to="/categories/smartwatches"
+                        >
+                            <MenuItem>Smartwatches</MenuItem>
+                        </Link>
+                    </div>
+                    <div className={classes.sectionMobile}>
+                        <IconButton
+                            aria-label="show more"
+                            aria-controls={mobileMenuId}
+                            aria-haspopup="true"
+                            onClick={handleMobileMenuOpen}
+                            color="inherit"
+                        >
+                            <MoreIcon />
+                        </IconButton>
+                    </div>
                     <NavLink to="/cart">
                         <CartIcon />
                     </NavLink>
                 </Toolbar>
             </AppBar>
+            {renderMobileMenu}
         </div>
     )
 }

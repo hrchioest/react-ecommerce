@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
-
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-    Button,
-    Box,
-} from '@material-ui/core'
-
 import Formulario from '../formulario/Formulario'
-import CartContext from '../../CartContext'
-import Alert from '@material-ui/lab/Alert'
+import CartContext from '../../context/CartContext'
 import * as firebase from 'firebase/app'
+import NoProductMessage from './NoProductMessage'
+import MessageOrden from './MessageOrden'
 import 'firebase/firestore'
 import { getFirestore } from '../../firebase'
-import { convertToMoney } from '../../utils'
+import { makeStyles } from '@material-ui/core/styles'
+import TableCart from './TableCart'
+import { Button, Box } from '@material-ui/core'
+
+const useStyles = makeStyles({
+    root: {
+        width: '100%',
+    },
+    container: {
+        maxHeight: 440,
+    },
+})
 
 const Cart = () => {
     const { cartItem, costoTotal, resetCantCart } = React.useContext(
@@ -29,20 +28,11 @@ const Cart = () => {
     const [orderId, setOrderId] = useState(null)
 
     if (cartItem.length === 0 && orderId === null) {
-        return (
-            <Alert severity="warning">
-                ¡No se tiene productos seleccionados!
-            </Alert>
-        )
-    }
-
-    const handleCheckout = () => {
-        setShowForm(true)
+        return <NoProductMessage />
     }
 
     async function createOrder(buyer) {
         const db = getFirestore()
-
         const orders = db.collection('orders')
         const newOrder = {
             buyer,
@@ -82,60 +72,23 @@ const Cart = () => {
     }
 
     if (orderId) {
-        return (
-            <Alert severity="success">Tu orden de compra es: {orderId}</Alert>
-        )
+        return <MessageOrden orderId={orderId} />
     }
 
     return (
         <>
-            <TableContainer component={Paper}>
-                <Table aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Producto</TableCell>
-                            <TableCell>Nombre</TableCell>
-                            <TableCell align="right">Cantidad</TableCell>
-                            <TableCell align="right">precio</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {cartItem.map((item) => (
-                            <TableRow key={item.id}>
-                                <TableCell component="th" scope="row">
-                                    <img
-                                        src={item.img}
-                                        alt="img"
-                                        style={{ width: '82px' }}
-                                    />
-                                </TableCell>
-                                <TableCell>{item.name}</TableCell>
-                                <TableCell align="right">
-                                    {item.count}
-                                </TableCell>
-                                <TableCell align="right">
-                                    {convertToMoney(item.price)}
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-                <Box display="flex" justifyContent="flex-end" p={1}>
-                    Costo total: {costoTotal()}
-                </Box>
-            </TableContainer>
-
+            <TableCart />
             <Box display="flex" justifyContent=" flex-end" p={1}>
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleCheckout}
+                    onClick={() => setShowForm(true)}
                 >
                     checkout
                 </Button>
             </Box>
 
-            {showForm ? <Formulario createOrder={createOrder} /> : null}
+            {showForm && <Formulario createOrder={createOrder} />}
         </>
     )
 }
