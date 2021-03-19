@@ -9,6 +9,7 @@ import { getFirestore } from '../../firebase'
 import { makeStyles } from '@material-ui/core/styles'
 import TableCart from './TableCart'
 import { Button, Box } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -86,6 +87,13 @@ const Cart = () => {
                 >
                     checkout
                 </Button>
+            </Box>
+            <Box display="flex" justifyContent=" flex-end" p={1} mb={10}>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" color="primary">
+                        Seguir comprando
+                    </Button>
+                </Link>
             </Box>
 
             {showForm && <Formulario createOrder={createOrder} />}

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const NoProductMessage = () => {
     return (
-        <div style={{ paddingTop: '70px' }}>
+        <div style={{ paddingTop: '70px', marginBottom: '300px' }}>
             <Alert severity="warning">
                 <div style={{ marginBottom: '20px' }}>
                     ¡No se tiene productos seleccionados!
