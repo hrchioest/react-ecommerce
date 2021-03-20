@@ -6,7 +6,7 @@ import Cart from './components/cart/Cart'
 import ItemListContainer from './containers/itemListContainer/ItemListContainer'
 import ItemDetailContainer from './containers/itemDetailContainer/ItemDetailContainer'
 import Footer from './components/footer/Footer'
-import SingleLineGridList from './components/carousel/Carousel'
+
 import { CartProvider } from './context/CartProvider'
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
                         <ItemDetailContainer />
                     </Route>
                 </Switch>
-                <SingleLineGridList />
+
                 <Footer />
             </BrowserRouter>
         </CartProvider>

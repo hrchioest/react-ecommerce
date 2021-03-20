@@ -9,20 +9,17 @@ const Item = ({ item: { id, name, description, price, img } }) => (
 
         <div>
             <Link to={`/item/${id}`}>
-                {' '}
                 <img src={img} alt="img" width="350" />
             </Link>
         </div>
-
-        <Button variant="contained" style={{ backgroundColor: '#f7d04b' }}>
-            <Link
-                to={`/item/${id}`}
-                style={{ textDecoration: 'none', color: 'black' }}
-            >
-                {' '}
-                Details{' '}
-            </Link>
-        </Button>
+        <Link
+            to={`/item/${id}`}
+            style={{ textDecoration: 'none', color: 'black' }}
+        >
+            <Button variant="contained" style={{ backgroundColor: '#f7d04b' }}>
+                Details
+            </Button>
+        </Link>
     </Box>
 )
 

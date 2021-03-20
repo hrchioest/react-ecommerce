@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import ItemList from '../../components/itemList/ItemList'
 import { getFirestore } from '../../firebase'
 import MainImgCategories from './MainImgCategories'
+import Spinner from '../../components/spinner/Spinner'
 
 const ItemListContainer = () => {
     const [list, setList] = useState([])
@@ -34,7 +35,7 @@ const ItemListContainer = () => {
     return (
         <>
             <MainImgCategories imgCategory={categoryId} />
-            <ItemList list={list} />
+            {list.length > 0 ? <ItemList list={list} /> : <Spinner />}
         </>
     )
 }

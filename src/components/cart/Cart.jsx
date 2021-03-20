@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import TableCart from './TableCart'
 import { Button, Box } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import Carousel from '../carousel/Carousel'
 
 const useStyles = makeStyles({
     root: {
@@ -97,6 +98,7 @@ const Cart = () => {
             </Box>
 
             {showForm && <Formulario createOrder={createOrder} />}
+            <Carousel />
         </>
     )
 }

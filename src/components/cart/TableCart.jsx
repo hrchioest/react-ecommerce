@@ -10,28 +10,16 @@ const useStyles = makeStyles({
     root: {
         width: '80%',
         margin: 'auto',
+        marginTop: '20px',
     },
     container: {
         maxHeight: 440,
-    },
-    table: {
-        marginTop: '80px',
     },
 })
 
 const TableCart = () => {
     const { cartItem, costoTotal } = React.useContext(CartContext)
-    const [page, setPage] = React.useState(0)
-    const [rowsPerPage, setRowsPerPage] = React.useState(10)
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage)
-    }
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value)
-        setPage(0)
-    }
     const classes = useStyles()
     return (
         <>
@@ -65,34 +53,26 @@ const TableCart = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {cartItem
-                                .slice(
-                                    page * rowsPerPage,
-                                    page * rowsPerPage + rowsPerPage
+                            {cartItem.map((item) => {
+                                return (
+                                    <TableRow key={item.id}>
+                                        <TableCell component="th" scope="row">
+                                            <img
+                                                src={item.img}
+                                                alt="img"
+                                                style={{ width: '82px' }}
+                                            />
+                                        </TableCell>
+                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell align="right">
+                                            {item.count}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            {convertToMoney(item.price)}
+                                        </TableCell>
+                                    </TableRow>
                                 )
-                                .map((item) => {
-                                    return (
-                                        <TableRow key={item.id}>
-                                            <TableCell
-                                                component="th"
-                                                scope="row"
-                                            >
-                                                <img
-                                                    src={item.img}
-                                                    alt="img"
-                                                    style={{ width: '82px' }}
-                                                />
-                                            </TableCell>
-                                            <TableCell>{item.name}</TableCell>
-                                            <TableCell align="right">
-                                                {item.count}
-                                            </TableCell>
-                                            <TableCell align="right">
-                                                {convertToMoney(item.price)}
-                                            </TableCell>
-                                        </TableRow>
-                                    )
-                                })}
+                            })}
                         </TableBody>
                     </Table>
                     <Box display="flex" justifyContent="flex-end" p={1}>
