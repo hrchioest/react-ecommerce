@@ -24,7 +24,8 @@ Para darle estilos con los componentes que tiene la librería como Botones, Inpu
 **Ver online**: https://hrchioest.github.io/react-ecommerce/ 
 
 Dejo la vista previa de lo logrado:
-![cubo](https://user-images.githubusercontent.com/53129859/111938779-78756e00-8aa9-11eb-960e-448e2572ae31.png)
+![Frame 2](https://user-images.githubusercontent.com/53129859/111939642-8af0a700-8aab-11eb-8206-af0f282949b1.png)
+
 
 
 
