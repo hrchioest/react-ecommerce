@@ -6,20 +6,8 @@ import NoProductMessage from './NoProductMessage'
 import MessageOrden from './MessageOrden'
 import 'firebase/firestore'
 import { getFirestore } from '../../firebase'
-import { makeStyles } from '@material-ui/core/styles'
 import TableCart from './TableCart'
-import { Button, Box } from '@material-ui/core'
-import { Link } from 'react-router-dom'
 import Carousel from '../carousel/Carousel'
-
-const useStyles = makeStyles({
-    root: {
-        width: '100%',
-    },
-    container: {
-        maxHeight: 440,
-    },
-})
 
 const Cart = () => {
     const { cartItem, costoTotal, resetCantCart } = React.useContext(
@@ -79,26 +67,17 @@ const Cart = () => {
 
     return (
         <>
-            <TableCart />
-            <Box display="flex" justifyContent=" flex-end" p={1}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => setShowForm(true)}
-                >
-                    checkout
-                </Button>
-            </Box>
-            <Box display="flex" justifyContent=" flex-end" p={1} mb={10}>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" color="primary">
-                        Seguir comprando
-                    </Button>
-                </Link>
-            </Box>
-
-            {showForm && <Formulario createOrder={createOrder} />}
-            <Carousel />
+            {showForm ? (
+                <>
+                    <Formulario createOrder={createOrder} />
+                    <Carousel />
+                </>
+            ) : (
+                <>
+                    <TableCart setShowForm={setShowForm} />
+                    <Carousel />
+                </>
+            )}
         </>
     )
 }

@@ -10,7 +10,7 @@ export default function Spinner() {
                 marginBottom: '28%',
             }}
         >
-            <CircularProgress disableShrink />
+            <CircularProgress disableShrink style={{ color: '#f7d04b' }}/>
         </div>
     )
 }

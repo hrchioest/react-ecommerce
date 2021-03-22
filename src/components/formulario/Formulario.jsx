@@ -16,7 +16,9 @@ const Formulario = ({ createOrder }) => {
     }))
 
     const [form, setForm] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
+        adress: '',
         email: '',
         emailConfirmation: '',
         phone: '',
@@ -31,15 +33,17 @@ const Formulario = ({ createOrder }) => {
     }
 
     const handleOnclick = () => {
-        const { name, email, phone } = form
-        createOrder({ name, email, phone })
+        const { firstName, lastName, adress, email, phone } = form
+        createOrder({ firstName, lastName, adress, email, phone })
     }
 
     const classes = useStyles()
 
     const disabled = !(
         form.email.length &&
-        form.name.length &&
+        form.firstName.length &&
+        form.lastName.length &&
+        form.adress.length &&
         form.emailConfirmation.length &&
         form.phone.length > 0 &&
         form.email === form.emailConfirmation
@@ -47,33 +51,60 @@ const Formulario = ({ createOrder }) => {
 
     return (
         <>
-            <Box display="flex" justifyContent="center">
+            <Box display="flex" justifyContent="center" margin="60px 0">
                 <form
                     className={classes.root}
                     noValidate
                     autoComplete="off"
                     fullWidth={true}
                 >
+                    <h2>To continue with the purchase, complete the data</h2>
                     <Box>
                         <TextField
                             required
-                            label="Nombre y Apellido"
-                            Value={form.name}
-                            placeholder="Nombre y Apellido"
+                            label="First Name"
+                            Value={form.firstName}
+                            placeholder="Andrea"
                             multiline
-                            name="name"
+                            name="firstName"
                             variant="outlined"
                             onChange={handleChange}
+                            helperText="First name"
+                        />
+                        <TextField
+                            required
+                            label="Last Name"
+                            Value={form.lastName}
+                            placeholder="Bernales Jorge"
+                            multiline
+                            name="lastName"
+                            variant="outlined"
+                            onChange={handleChange}
+                            helperText="Last name"
+                        />
+                    </Box>
+                    <Box>
+                        <TextField
+                            required
+                            label="Adress"
+                            Value={form.adress}
+                            placeholder="Calle Segovia Nº 1892 - Barrio Norte"
+                            multiline
+                            name="adress"
+                            variant="outlined"
+                            onChange={handleChange}
+                            helperText="Adress"
                         />
                         <TextField
                             required
                             label="Email"
                             Value={form.email}
-                            placeholder="Email"
+                            placeholder="andrea@gmail.com"
                             multiline
                             name="email"
                             variant="outlined"
                             onChange={handleChange}
+                            helperText="E-mail"
                         />
                     </Box>
                     <Box>
@@ -81,15 +112,16 @@ const Formulario = ({ createOrder }) => {
                             required
                             label="Repetir email"
                             Value={form.emailConfirmation}
-                            placeholder="Confirma tu email"
+                            placeholder="andrea@gmail.com"
                             multiline
                             name="emailConfirmation"
                             variant="outlined"
                             onChange={handleChange}
+                            helperText="Repeat email"
                         />
                         <TextField
                             required
-                            label="Teléfono de contacto"
+                            label="15111008"
                             Value={form.phone}
                             placeholder="Teléfono de contacto"
                             multiline
@@ -98,21 +130,23 @@ const Formulario = ({ createOrder }) => {
                             onChange={handleChange}
                         />
                     </Box>
+                    <Box display="flex" justifyContent=" flex-end" p={1}>
+                        {disabled ? (
+                            <AlertFailForm open={open} setOpen={setOpen} />
+                        ) : (
+                            <Button
+                                variant="contained"
+                                style={{
+                                    backgroundColor: '#f7d04b',
+                                    color: '#000',
+                                }}
+                                onClick={handleOnclick}
+                            >
+                                Finish buying
+                            </Button>
+                        )}
+                    </Box>
                 </form>
-            </Box>
-
-            <Box display="flex" justifyContent=" flex-end" p={1}>
-                {disabled ? (
-                    <AlertFailForm open={open} setOpen={setOpen} />
-                ) : (
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={handleOnclick}
-                    >
-                        Finalizar compra
-                    </Button>
-                )}
             </Box>
         </>
     )

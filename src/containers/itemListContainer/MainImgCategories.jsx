@@ -2,8 +2,7 @@ import React from 'react'
 import imgs from '../../listImgs'
 
 const MainImgCategories = ({ imgCategory }) => {
-    const image = imgs.filter((img) => img.idCategory == imgCategory)
-    console.log('img', image)
+    const image = imgs.filter((img) => img.idCategory === imgCategory)
 
     return (
         <>
@@ -11,10 +10,10 @@ const MainImgCategories = ({ imgCategory }) => {
                 <div>
                     <img
                         src={image[0].img}
-                        alt="Imagen-categorias"
+                        alt="categories"
                         style={{
                             width: '100%',
-                            height: '420px',
+                            height: '350px',
                             objectFit: 'cover',
                         }}
                     />

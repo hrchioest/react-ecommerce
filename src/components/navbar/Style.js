@@ -31,12 +31,6 @@ const style = makeStyles((theme) => ({
             display: 'flex',
         },
     },
-    sectionDesktop: {
-        display: 'none',
-        [theme.breakpoints.up('md')]: {
-            display: 'flex',
-        },
-    },
     sectionMobile: {
         display: 'flex',
         [theme.breakpoints.up('md')]: {

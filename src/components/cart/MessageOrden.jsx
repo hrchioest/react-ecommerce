@@ -1,15 +1,12 @@
 import React from 'react'
-import Alert from '@material-ui/lab/Alert'
 import Carousel from '../carousel/Carousel'
+import Alert from '../alert/Alert'
 
 const MessageOrden = ({ orderId }) => {
     return (
         <>
-            <div>
-                <Alert severity="success">
-                    Tu orden de compra es: {orderId}
-                </Alert>
-            </div>
+            <Alert text={`Your purchase order is: ${orderId}`} />
+
             <div style={{ paddingTop: '400px' }}>
                 <Carousel />
             </div>

@@ -2,9 +2,10 @@ import React from 'react'
 import CartContext from '../../context/CartContext'
 import { Table, TableBody, TableCell } from '@material-ui/core'
 import { TableContainer, TableHead, TableRow } from '@material-ui/core'
-import { Paper, Box } from '@material-ui/core'
+import { Paper, Box} from '@material-ui/core'
 import { convertToMoney } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles'
+import Buttons from '../buttons/Buttons'
 
 const useStyles = makeStyles({
     root: {
@@ -12,19 +13,19 @@ const useStyles = makeStyles({
         margin: 'auto',
         marginTop: '20px',
     },
-    container: {
-        maxHeight: 440,
-    },
+    // container: {
+    //     maxHeight: 440,
+    // },
 })
 
-const TableCart = () => {
+const TableCart = ({ setShowForm }) => {
     const { cartItem, costoTotal } = React.useContext(CartContext)
 
     const classes = useStyles()
     return (
         <>
             <Paper className={classes.root}>
-                <TableContainer className={classes.container}>
+                <TableContainer>
                     <Table
                         className={classes.table}
                         stickyHeader
@@ -33,22 +34,22 @@ const TableCart = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell style={{ minWidth: 170 }}>
-                                    Producto
+                                    Product
                                 </TableCell>
                                 <TableCell style={{ minWidth: 170 }}>
-                                    Nombre
+                                    Title
                                 </TableCell>
                                 <TableCell
                                     align="right"
                                     style={{ minWidth: 100 }}
                                 >
-                                    Cantidad
+                                    Count
                                 </TableCell>
                                 <TableCell
                                     align="right"
                                     style={{ minWidth: 170 }}
                                 >
-                                    precio
+                                    Price
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -76,9 +77,11 @@ const TableCart = () => {
                         </TableBody>
                     </Table>
                     <Box display="flex" justifyContent="flex-end" p={1}>
-                        Costo total: {costoTotal()}
+                        Total cost: {costoTotal()}
                     </Box>
                 </TableContainer>
+
+                <Buttons setShowForm={setShowForm} />
             </Paper>
         </>
     )

@@ -26,7 +26,7 @@ const AlertFailForm = ({ open, setOpen }) => {
                 color="primary"
                 onClick={handleClickOpen}
             >
-                Finalizar compra
+                Finish buying
             </Button>
             <Dialog
                 open={open}
@@ -37,19 +37,20 @@ const AlertFailForm = ({ open, setOpen }) => {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <DialogTitle id="alert-dialog-slide-title">
-                    Aviso para continuar compra
+                    Alert to continue shopping
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Error! Los mails no son iguales
+                        Error! Verify that all the fields are complete and that
+                        the emails are the same
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
-                        Cancelar
+                        Cancel
                     </Button>
                     <Button onClick={handleClose} color="primary">
-                        Aceptar
+                        Agree
                     </Button>
                 </DialogActions>
             </Dialog>

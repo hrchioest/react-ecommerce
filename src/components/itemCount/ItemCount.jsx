@@ -26,7 +26,7 @@ const ItemCount = ({ min, stock, count, setCount }) => {
                             style={{ fontSize: 30 }}
                             onClick={subtract}
                         ></RemoveCircleIcon>
-                        <span>{count}</span>
+                        <span style={{ paddingTop: '7px' }}>{count}</span>
                         <Icon
                             style={{ fontSize: 30 }}
                             disabled={count === stock}

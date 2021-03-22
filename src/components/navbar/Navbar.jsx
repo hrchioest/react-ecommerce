@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
     Menu,
     IconButton,
@@ -23,7 +23,6 @@ const Navbar = () => {
     const classes = useStyles()
 
     // conectando categories con firebase:
-    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         const db = getFirestore()
@@ -33,43 +32,29 @@ const Navbar = () => {
             .then((querySnapshot) => {
                 if (querySnapshot.size === 0) {
                     console.log('no results')
-                }
-                setCategories(
+                } else {
                     querySnapshot.docs.map((doc) => ({
                         ...doc.data(),
                         id: doc.id,
                     }))
-                )
+                }
             })
             .catch((error) => {
                 console.log('Error searching categories', error)
             })
     }, [])
 
-    const [anchorEl, setAnchorEl] = React.useState(null)
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
-    const isMenuOpen = Boolean(anchorEl)
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
-
-    const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget)
-    }
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null)
     }
 
-    const handleMenuClose = () => {
-        setAnchorEl(null)
-        handleMobileMenuClose()
-    }
-
     const handleMobileMenuOpen = (event) => {
         setMobileMoreAnchorEl(event.currentTarget)
     }
-
-    const menuId = 'primary-search-account-menu'
 
     const mobileMenuId = 'primary-search-account-menu-mobile'
     const renderMobileMenu = (
@@ -109,6 +94,7 @@ const Navbar = () => {
                             <img
                                 className={classes.title}
                                 src="https://d26lpennugtm8s.cloudfront.net/stores/001/063/033/themes/common/logo-1421680389-1571774718-1624cbbd901c2cf55aa291fb448a8c991571774719.png?"
+                                alt="imagen-logo"
                             />
                         </NavLink>
                     </Typography>

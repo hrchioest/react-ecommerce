@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 // import Item from '../item/Item'
 import { Button } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
-
 import CartContext from '../../context/CartContext'
 
 const ItemDetail = ({ item }) => {
@@ -40,8 +39,8 @@ const ItemDetail = ({ item }) => {
             </Box>
             <Box paddingTop={10} margin={5}>
                 <div style={{ fontWeight: 'bold' }}>{item.description}</div>
-                <p>Precio: $ {Intl.NumberFormat().format(item.price)}</p>
-                <p>Stock disponible: {item.stock}</p>
+                <p>price: $ {Intl.NumberFormat().format(item.price)}</p>
+                <p>Available stock: {item.stock}</p>
 
                 <ItemCount
                     setCount={setCount}
@@ -59,9 +58,10 @@ const ItemDetail = ({ item }) => {
                                     color="secondary"
                                     style={{
                                         marginBottom: '20px',
+                                        backgroundColor: '#000',
                                     }}
                                 >
-                                    Terminar Compra
+                                    Finish buying
                                 </Button>
                             </Link>
                         </div>
@@ -70,9 +70,9 @@ const ItemDetail = ({ item }) => {
                                 <Button
                                     variant="contained"
                                     color="primary"
-                                    style={{ textDecoration: 'none' }}
+                                    style={{ backgroundColor: '#f7d04b' }}
                                 >
-                                    Seguir comprando
+                                    Continue buying
                                 </Button>
                             </Link>
                         </div>
@@ -80,12 +80,12 @@ const ItemDetail = ({ item }) => {
                 ) : (
                     <Button
                         variant="contained"
-                        color="secondary"
+                        style={{ backgroundColor: '#000', color: '#fff' }}
                         fullWidth
                         onClick={handleClickComprar}
                         disabled={item.stock === 0}
                     >
-                        Agregar a carrito
+                        Add to cart
                     </Button>
                 )}
             </Box>

@@ -21,6 +21,7 @@ const ItemDetailContainer = () => {
     const { productId } = useParams()
 
     useEffect(() => {
+        setLoading(true)
         const db = getFirestore()
         const docRef = db.collection('items').doc(productId)
 
@@ -30,7 +31,7 @@ const ItemDetailContainer = () => {
         })
     }, [productId])
 
-    return <>{item.length === 0 ? <Spinner /> : <ItemDetail item={item} />}</>
+    return <>{loading === true ? <Spinner /> : <ItemDetail item={item} />}</>
 }
 
 export default ItemDetailContainer

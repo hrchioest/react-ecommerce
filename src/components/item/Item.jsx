@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 const Item = ({ item: { id, name, description, price, img } }) => (
     <Box flexDirection="colum" marginTop="60px">
         <h2>{name}</h2>
-        <span>Price :{price}</span>
-
+        <div style={{ paddingBottom: '20px' }}>
+            <span>Price: ${price}</span>
+        </div>
         <div>
             <Link to={`/item/${id}`}>
                 <img src={img} alt="img" width="350" />

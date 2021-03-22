@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
 import Cart from './components/cart/Cart'
 import ItemListContainer from './containers/itemListContainer/ItemListContainer'
 import ItemDetailContainer from './containers/itemDetailContainer/ItemDetailContainer'
 import Footer from './components/footer/Footer'
-
 import { CartProvider } from './context/CartProvider'
 
 function App() {
@@ -15,6 +14,7 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Switch>
+                    <Redirect from="/react-ecommerce" to="/" />
                     <Route exact path="/">
                         <Home />
                     </Route>
