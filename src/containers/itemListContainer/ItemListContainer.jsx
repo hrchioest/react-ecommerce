@@ -8,7 +8,6 @@ import Spinner from '../../components/spinner/Spinner'
 const ItemListContainer = () => {
     const [list, setList] = useState([])
     const { categoryId } = useParams()
-    console.log('cat1', categoryId)
     useEffect(() => {
         const db = getFirestore()
 
@@ -31,7 +30,6 @@ const ItemListContainer = () => {
             )
         })
     }, [categoryId])
-    console.log('cat2', categoryId)
     return (
         <>
             <MainImgCategories imgCategory={categoryId} />
