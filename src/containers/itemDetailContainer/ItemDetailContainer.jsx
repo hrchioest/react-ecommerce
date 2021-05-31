@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Box from '@material-ui/core/Box'
 import ItemDetail from '../../components/itemDetail/ItemDetail'
 import { getFirestore } from '../../firebase'
 import Spinner from '../../components/spinner/Spinner'
@@ -31,7 +32,11 @@ const ItemDetailContainer = () => {
         })
     }, [productId])
 
-    return <>{loading === true ? <Spinner /> : <ItemDetail item={item} />}</>
+    return (
+        <Box minHeight="87vh">
+            {loading === true ? <Spinner /> : <ItemDetail item={item} />}
+        </Box>
+    )
 }
 
 export default ItemDetailContainer

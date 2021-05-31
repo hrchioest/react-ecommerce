@@ -1,7 +1,6 @@
 import React from 'react'
 import ItemCount from '../itemCount/ItemCount'
 import { Link } from 'react-router-dom'
-// import Item from '../item/Item'
 import { Button } from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import CartContext from '../../context/CartContext'
@@ -31,7 +30,6 @@ const ItemDetail = ({ item }) => {
             justifyContent="center"
             margin="auto"
             flexWrap="wrap"
-            marginBottom="150px"
         >
             <Box flexDirection="colum" marginTop="60px">
                 <h2>{item.name}</h2>

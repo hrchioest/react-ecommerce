@@ -2,7 +2,7 @@ import React from 'react'
 import CartContext from '../../context/CartContext'
 import { Table, TableBody, TableCell } from '@material-ui/core'
 import { TableContainer, TableHead, TableRow } from '@material-ui/core'
-import { Paper, Box} from '@material-ui/core'
+import { Paper, Box } from '@material-ui/core'
 import { convertToMoney } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles'
 import Buttons from '../buttons/Buttons'
@@ -13,14 +13,15 @@ const useStyles = makeStyles({
         margin: 'auto',
         marginTop: '20px',
     },
-    // container: {
-    //     maxHeight: 440,
-    // },
 })
 
 const TableCart = ({ setShowForm }) => {
-    const { cartItem, costoTotal } = React.useContext(CartContext)
+    const { cartItem, deleteProduct, costoTotal } =
+        React.useContext(CartContext)
 
+    const deleteItem = (id) => {
+        deleteProduct(id)
+    }
     const classes = useStyles()
     return (
         <>
@@ -51,6 +52,12 @@ const TableCart = ({ setShowForm }) => {
                                 >
                                     Price
                                 </TableCell>
+                                <TableCell
+                                    align="right"
+                                    style={{ minWidth: 170 }}
+                                >
+                                    Action
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -70,6 +77,10 @@ const TableCart = ({ setShowForm }) => {
                                         </TableCell>
                                         <TableCell align="right">
                                             {convertToMoney(item.price)}
+                                        </TableCell>
+                                        <TableCell align="right">
+                                            Delete
+                                            {deleteItem(item.id)}
                                         </TableCell>
                                     </TableRow>
                                 )

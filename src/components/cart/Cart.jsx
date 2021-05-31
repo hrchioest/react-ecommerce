@@ -10,9 +10,8 @@ import TableCart from './TableCart'
 import Carousel from '../carousel/Carousel'
 
 const Cart = () => {
-    const { cartItem, costoTotal, resetCantCart } = React.useContext(
-        CartContext
-    )
+    const { cartItem, costoTotal, resetCantCart } =
+        React.useContext(CartContext)
 
     const [showForm, setShowForm] = useState(false)
     const [orderId, setOrderId] = useState(null)

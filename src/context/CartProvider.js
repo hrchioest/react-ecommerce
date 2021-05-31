@@ -20,6 +20,10 @@ export const CartProvider = ({ children }) => {
             })
         }
     }
+    const deleteProduct = (itemCount) => {
+        const newItems = cartItem.filter((item) => item.id !== itemCount.id)
+        setCartItem(newItems)
+    }
 
     const costoTotal = () => {
         const cost = cartItem.reduce(
@@ -40,6 +44,7 @@ export const CartProvider = ({ children }) => {
             value={{
                 cartItem,
                 productsAdd,
+                deleteProduct,
                 costoTotal,
                 cantTotal,
                 resetCantCart,
