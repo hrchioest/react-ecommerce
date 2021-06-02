@@ -12,6 +12,7 @@ const useStyles = makeStyles({
         width: '80%',
         margin: 'auto',
         marginTop: '20px',
+        minHeight: '77vh',
     },
 })
 
@@ -52,12 +53,6 @@ const TableCart = ({ setShowForm }) => {
                                 >
                                     Price
                                 </TableCell>
-                                <TableCell
-                                    align="right"
-                                    style={{ minWidth: 170 }}
-                                >
-                                    Action
-                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -77,10 +72,6 @@ const TableCart = ({ setShowForm }) => {
                                         </TableCell>
                                         <TableCell align="right">
                                             {convertToMoney(item.price)}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            Delete
-                                            {deleteItem(item.id)}
                                         </TableCell>
                                     </TableRow>
                                 )
