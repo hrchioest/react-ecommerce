@@ -20,8 +20,8 @@ const TableCart = ({ setShowForm }) => {
     const { cartItem, deleteProduct, costoTotal } =
         React.useContext(CartContext)
 
-    const deleteItem = (id) => {
-        deleteProduct(id)
+    const deleteItem = (item) => {
+        deleteProduct(item)
     }
     const classes = useStyles()
     return (
@@ -53,6 +53,11 @@ const TableCart = ({ setShowForm }) => {
                                 >
                                     Price
                                 </TableCell>
+                                <TableCell
+                                    align="right"
+                                    style={{ minWidth: 30 }}
+                                >
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -72,6 +77,12 @@ const TableCart = ({ setShowForm }) => {
                                         </TableCell>
                                         <TableCell align="right">
                                             {convertToMoney(item.price)}
+                                        </TableCell>
+                                        <TableCell
+                                             align="right">
+                                            <Button onClick={() => deleteItem(item)}>
+                                            Delete
+                                            </Button>
                                         </TableCell>
                                     </TableRow>
                                 )
