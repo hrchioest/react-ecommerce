@@ -1,6 +1,6 @@
 import React from 'react'
-import Icon from '@material-ui/core/Icon'
 import RemoveCircleIcon from '@material-ui/icons/RemoveCircle'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 import Box from '@material-ui/core/Box'
 
 const ItemCount = ({ min, stock, count, setCount }) => {
@@ -27,13 +27,11 @@ const ItemCount = ({ min, stock, count, setCount }) => {
                             onClick={subtract}
                         ></RemoveCircleIcon>
                         <span style={{ paddingTop: '7px' }}>{count}</span>
-                        <Icon
+                        <AddCircleIcon
                             style={{ fontSize: 30 }}
                             disabled={count === stock}
                             onClick={add}
-                        >
-                            add_circle
-                        </Icon>
+                        ></AddCircleIcon>
                     </>
                 )}
             </Box>
